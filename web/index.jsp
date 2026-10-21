@@ -10,20 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>MP3 Login</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./global.css">
+        <link rel="stylesheet" href="./login-style.css">
     </head>
     <body>
-        <fieldset class="liquidglass" >
-            <h1>Login</h1>
-            <form method="post" action="../src/java/LoginServlet.java">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-                <br><br>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-                <br><br>
-                <input type="submit" value="Sign in">
-            </form>
-        </fieldset>
+        <h1>Login</h1>
+            <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username">
+               <br><br>
+               <label for="password">Password</label>
+               <input type="password" id="password" name="password">
+               <br><br>
+               <input type="submit" value="Sign in">
+        </form>
     </body>
 </html>
