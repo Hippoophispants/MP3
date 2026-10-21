@@ -7,13 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Success Page</title>
-        <link rel="stylesheet" href="./global.css">
-        <link rel="stylesheet" href="./success-style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/global.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/login-style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/success-style.css">
     </head>
     <body>
+        ${applicationScope.headerContent}
         <h1>Enter a String</h1>
         <form method="post" action="<%= request.getContextPath() %>/CharacterCountingServlet">
             <input type="text" id="inputString" name="inputString" placeholder="Type your string here">
@@ -29,5 +31,6 @@
                 <li>Number of symbols: <strong><%= request.getAttribute("symbolCount") %></strong></li>
             </ul>
         <% } %>
+        ${applicationScope.footerContent}
     </body>
 </html>

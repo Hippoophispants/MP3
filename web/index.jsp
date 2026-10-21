@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="./login-style.css">
     </head>
     <body>
+        ${applicationScope.headerContent}
         <h1>Login</h1>
             <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
               <label for="username">Username</label>
@@ -25,4 +26,5 @@
                <input type="submit" value="Sign in">
         </form>
     </body>
+    ${applicationScope.footerContent}
 </html>
