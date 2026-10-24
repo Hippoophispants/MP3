@@ -1,3 +1,5 @@
+package controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nitro V15
  */
-public class CharacterCountingServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,38 +29,20 @@ public class CharacterCountingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String inputString = request.getParameter("inputString");
-        if (inputString != null) {
-            int characterCount = inputString.length();
-            int digitCount = 0;
-            int vowelCount = 0;
-            int consonantCount = 0;
-            int symbolCount = 0;
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String configuredUsername = getServletConfig().getInitParameter("username");
+        String configuredPassword = getServletConfig().getInitParameter("password");
 
-            for (int i = 0; i < inputString.length(); i++) {
-                char c = inputString.charAt(i);
-                if (Character.isDigit(c)) {
-                    digitCount++;
-                } else if (Character.isLetter(c)) {
-                    if ("AEIOUaeiou".indexOf(c) != -1) {
-                        vowelCount++;
-                    } else {
-                        consonantCount++;
-                    }
-                } else {
-                    if (c != ' ') {
-                        symbolCount++;
-                    }
-                }
-            }
+        if (configuredUsername != null && configuredUsername.equals(username)
+                && configuredPassword != null && configuredPassword.equals(password)) {
+            // Successful login
+            response.sendRedirect(request.getContextPath() + "/success.jsp");
+        } else {
+            // Failed login 
 
-            request.setAttribute("characterCount", characterCount);
-            request.setAttribute("digitCount", digitCount);
-            request.setAttribute("vowelCount", vowelCount);
-            request.setAttribute("consonantCount", consonantCount);
-            request.setAttribute("symbolCount", symbolCount);
+            response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
-        request.getRequestDispatcher("/success.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
