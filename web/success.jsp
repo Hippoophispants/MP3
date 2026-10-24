@@ -10,15 +10,15 @@
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Success Page</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/global.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/login-style.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/success-style.css">
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="login-style.css">
+        <link rel="stylesheet" href="success-style.css">
     </head>
     <body>
         ${applicationScope.headerContent}
         <h1>Enter a String</h1>
         <form method="post" action="<%= request.getContextPath() %>/CharacterCountingServlet">
-            <input type="text" id="inputString" name="inputString" placeholder="Type your string here">
+            <input type="text" id="inputString" name="inputString" class="inputstring" placeholder="Type your string here">
             <input type="submit" value="Submit">
         </form>
         <% if (request.getParameter("inputString") != null) { %>

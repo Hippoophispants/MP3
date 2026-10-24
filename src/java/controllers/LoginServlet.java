@@ -7,6 +7,8 @@ package controllers;
  */
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,16 +36,30 @@ public class LoginServlet extends HttpServlet {
         String configuredUsername = getServletConfig().getInitParameter("username");
         String configuredPassword = getServletConfig().getInitParameter("password");
 
-        if (configuredUsername != null && configuredUsername.equals(username)
-                && configuredPassword != null && configuredPassword.equals(password)) {
+        List<String> errorMessages = new ArrayList<String>();
+
+        if (username == null || username.trim().isEmpty()) {
+            errorMessages.add("Username is required.");
+        } else if (configuredUsername == null || !configuredUsername.equals(username)) {
+            errorMessages.add("Invalid username.");
+        }
+
+        if (password == null || password.isEmpty()) {
+            errorMessages.add("Password is required.");
+        } else if (configuredPassword == null || !configuredPassword.equals(password)) {
+            errorMessages.add("Invalid password.");
+        }
+
+        if (errorMessages.isEmpty()) {
             // Successful login
             response.sendRedirect(request.getContextPath() + "/success.jsp");
         } else {
-            // Failed login 
-
-            response.sendRedirect(request.getContextPath() + "/error.jsp");
+            request.setAttribute("errorMessages", errorMessages);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -73,7 +89,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
