@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        ${applicationScope.headerContent}
         <h1>Hello World!</h1>
+        ${applicationScope.footerContent}
     </body>
 </html>
