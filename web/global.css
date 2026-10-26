@@ -35,20 +35,11 @@
     right: 10px;
     width: auto;
     margin: 0;
-    border-radius: 15px;
     box-sizing: border-box;
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 15px 30px;
-    font-family: Gilroy, Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 .bottom-bar {
@@ -58,21 +49,12 @@
     right: 10px;
     width: auto;
     margin: 0;
-    border-radius: 15px;
     box-sizing: border-box;
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 15px 30px;
-    font-family: Gilroy, Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 .date-text {

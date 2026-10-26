@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 
         if (errorMessages.isEmpty()) {
             // Successful login
-            response.sendRedirect(request.getContextPath() + "/success.jsp");
+            request.getRequestDispatcher("/success.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessages", errorMessages);
             request.getRequestDispatcher("/error.jsp").forward(request, response);
