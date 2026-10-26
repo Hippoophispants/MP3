@@ -12,17 +12,11 @@ public class AppContextListener implements ServletContextListener {
 
         ctx.setAttribute("appDate", now);
 
-        String header = "<div class='top-bar'>"
-        + "<span class='title-text'>ICS2608 / 2CSC / ABAD - ABELLA - COSTALES</span>"
-        + "</div>";
+        String headerInfo = "ICS2608 / 2CSC / ABAD - ABELLA - COSTALES";
+        ctx.setAttribute("headerInfo", headerInfo);
 
-String footer = "<div class='bottom-bar'>"
-        + "<span class='date-text'>" + now.toString() + "</span>"
-        + "<span class='badge'>MP3</span>"
-        + "</div>";
-
-ctx.setAttribute("headerContent", header);
-ctx.setAttribute("footerContent", footer);
+        String footerInfo = "Login and Character Counting System";
+        ctx.setAttribute("footerInfo", footerInfo);
     }
 
     @Override

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : error
-    Created on : Oct 20, 2026, 9:37:48 PM
-    Author     : Nitro V15
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -14,8 +8,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/global.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/error-style.css">
     </head>
+    
     <body>
-        ${applicationScope.headerContent}
+        <jsp:include page="header.jsp" />
         <h1>Login Failed</h1>
         <div role="alert">
             <ul>
@@ -25,6 +20,6 @@
             </ul>
         </div>
         <p><a href="${pageContext.request.contextPath}/index.jsp">Return to login</a></p>
-        ${applicationScope.footerContent}
+    <jsp:include page="footer.jsp" />
     </body>
 </html>

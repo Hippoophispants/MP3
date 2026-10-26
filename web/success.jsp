@@ -1,10 +1,4 @@
-<!-- <%-- 
-    Document   : success
-    Created on : Oct 20, 2026, 9:37:25 PM
-    Author     : Nitro V15
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
         <head>
@@ -14,8 +8,9 @@
         <link rel="stylesheet" href="login-style.css">
         <link rel="stylesheet" href="success-style.css">
     </head>
+    
     <body>
-        ${applicationScope.headerContent}
+        <jsp:include page="header.jsp" />
         <h1>Enter a String</h1>
         <form method="post" action="<%= request.getContextPath() %>/CharacterCountingServlet">
             <input type="text" id="inputString" name="inputString" class="inputstring" placeholder="Type your string here">
@@ -31,6 +26,6 @@
                 <li>Number of symbols: <strong><%= request.getAttribute("symbolCount") %></strong></li>
             </ul>
         <% } %>
-        ${applicationScope.footerContent}
+        <jsp:include page="footer.jsp" />
     </body>
 </html>
