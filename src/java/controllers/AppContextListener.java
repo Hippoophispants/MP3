@@ -13,6 +13,7 @@ public class AppContextListener implements ServletContextListener {
         Date now = new Date();
 
         ctx.setAttribute("appDate", now);
+        ctx.setAttribute("mpId", "MP3");
 
         String headerInfo = "ICS2608 / 2CSC / ABAD - ABELLA - COSTALES";
         ctx.setAttribute("headerInfo", headerInfo);

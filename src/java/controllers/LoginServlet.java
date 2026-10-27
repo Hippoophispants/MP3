@@ -37,17 +37,21 @@ public class LoginServlet extends HttpServlet {
         String configuredPassword = getServletConfig().getInitParameter("password");
 
         List<String> errorMessages = new ArrayList<String>();
+        
+        if ((username == null || username.trim().isEmpty()) && (password == null || password.isEmpty())) {
+            errorMessages.add("Both username and password are required.");
+        } else {
+            if (username == null || username.trim().isEmpty()) {
+                errorMessages.add("Username is required.");
+            } else if (!configuredUsername.equals(username)) {
+                errorMessages.add("Incorrect username.");
+            }
 
-        if (username == null || username.trim().isEmpty()) {
-            errorMessages.add("Username is required.");
-        } else if (configuredUsername == null || !configuredUsername.equals(username)) {
-            errorMessages.add("Invalid username.");
-        }
-
-        if (password == null || password.isEmpty()) {
-            errorMessages.add("Password is required.");
-        } else if (configuredPassword == null || !configuredPassword.equals(password)) {
-            errorMessages.add("Invalid password.");
+            if (password == null || password.isEmpty()) {
+                errorMessages.add("Password is required.");
+            } else if (!configuredPassword.equals(password)) {
+                errorMessages.add("Incorrect password.");
+            }
         }
 
         if (errorMessages.isEmpty()) {
@@ -57,6 +61,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("errorMessages", errorMessages);
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
+        
     }
 
 

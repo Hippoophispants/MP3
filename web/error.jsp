@@ -5,8 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Error</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/global.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/error-style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/global.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/error-style.css">
     </head>
     
     <body>

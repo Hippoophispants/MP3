@@ -4,8 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>MP3 Login</title>
-        <link rel="stylesheet" href="./global.css">
-        <link rel="stylesheet" href="./login-style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/global.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/login-style.css">
     </head>
    
     <body>
