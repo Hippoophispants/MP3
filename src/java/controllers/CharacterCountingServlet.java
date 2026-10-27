@@ -49,7 +49,7 @@ public class CharacterCountingServlet extends HttpServlet {
                 } else if (consonants.indexOf(c) != -1) {
                     consonantCount++;
                 } else {
-                    if (c != ' ') {
+                    if (!Character.isWhitespace(c)) {
                         symbolCount++;
                     }
                 }

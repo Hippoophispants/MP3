@@ -48,6 +48,6 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <listener>
-        <listener-class>AppContextListener</listener-class>
+        <listener-class>controllers.AppContextListener</listener-class>
     </listener>
 </web-app>
