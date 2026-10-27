@@ -9,17 +9,23 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/error-style.css">
     </head>
     
-    <body>
+    <body class="error-page">
         <jsp:include page="header.jsp" />
-        <h1>Login Failed</h1>
-        <div role="alert">
-            <ul>
-                <c:forEach var="errorMessage" items="${requestScope.errorMessages}">
-                    <li><c:out value="${errorMessage}"/></li>
-                </c:forEach>
-            </ul>
-        </div>
-        <p><a href="${pageContext.request.contextPath}/index.jsp">Return to login</a></p>
+        <main class="error-content">
+            <h1>Error</h1>
+            <h2>Login Failed</h2>
+            <div class="error-details">
+                <img class="error-duck" src="${pageContext.request.contextPath}/images/confused-duck.png" alt="Confused duck">
+                <div class="error-messages" role="alert">
+                    <ul>
+                        <c:forEach var="errorMessage" items="${requestScope.errorMessages}">
+                            <li><c:out value="${errorMessage}"/></li>
+                        </c:forEach>
+                    </ul>
+                    <a class="return-link" href="${pageContext.request.contextPath}/index.jsp">← Back to Homepage</a>
+                </div>
+            </div>
+        </main>
     <jsp:include page="footer.jsp" />
     </body>
 </html>

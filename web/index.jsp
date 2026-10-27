@@ -8,17 +8,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/login-style.css">
     </head>
    
-    <body>
+    <body class="login-page">
         <jsp:include page="header.jsp" />
         <h1>Login</h1>
-            <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username">
-               <br><br>
-               <label for="password">Password</label>
-               <input type="password" id="password" name="password">
-               <br><br>
-               <input type="submit" value="Sign in">
+        <form class="login-form" method="post" action="<%= request.getContextPath() %>/LoginServlet">
+            <input type="text" id="username" name="username" placeholder="username">
+            <input type="password" id="password" name="password" placeholder="password">
+            <input type="submit" value="Sign In">
         </form>
         <jsp:include page="footer.jsp" />
     </body>
