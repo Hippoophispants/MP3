@@ -1,48 +1,183 @@
-form {
-    box-sizing: border-box;
-    width: min(600px, calc(100vw - 40px));
-    padding: 0;
-    margin: 20px 0;
+body {
+    --surface: rgba(45, 54, 59, 0.85);
+    --surface-line: #596066;
+    --field: #14181b;
+    --field-line: #565b5f;
+    --field-line-focus: #aab0b3;
+    --placeholder: #c5cacd;
+    --button: #3e474c;
+    --button-hover: #4a5358;
+    --button-line: #92999f;
+    --chip: #15191c;
+    --accent: #f78927;
+    --muted: #81868a;
+
+    display: grid;
+    grid-template-columns: minmax(0, 9fr) minmax(0, 10fr);
+    grid-template-rows: minmax(48px, 1fr) auto auto minmax(48px, 1fr);
+    column-gap: clamp(32px, 4.5vw, 64px);
+    align-items: start;
+    height: auto;
+    padding: 77px clamp(24px, 5.6vw, 96px);
 }
 
-input[type="text"] {
-    box-sizing: border-box;
-    font-size: 1.1rem;
+body > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    margin: 0 0 64px;
+    font-size: clamp(2rem, 3vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+body > form {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 52px;
     width: 100%;
-    min-height: 50px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-family: inherit;
-    resize: none;
+    margin: 0;
+    padding: 0;
 }
 
-input[type="submit"] {
-    font-weight: bold;
-    font-size: 1.2rem;
-    display: block;
-    margin: 10px auto; 
-    height: 50px;
-    width: 50%;
-    background-color: #F4AE52;
+body > form input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 64px;
+    margin: 0;
+    padding: 0 22px;
+    border: 1px solid var(--field-line);
+    border-radius: 6px;
+    outline: none;
+    background: var(--field);
     color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    font: inherit;
+    font-size: 1.1rem;
+}
+
+body > form input[type="text"]::placeholder {
+    color: var(--placeholder);
+    opacity: 1;
+}
+
+body > form input[type="text"]:focus {
+    border-color: var(--field-line-focus);
+    box-shadow: 0 0 0 3px rgba(170, 176, 179, 0.18);
+}
+
+body > form input[type="submit"] {
+    box-sizing: border-box;
+    width: 62%;
+    height: 58px;
+    margin: 0;
+    padding: 0 24px;
+    border: 1px solid var(--button-line);
+    border-radius: 6px;
+    background: var(--button);
+    color: #fff;
     cursor: pointer;
+    font: inherit;
+    font-size: 1.25rem;
+    transition: background-color 0.15s ease;
 }
 
-input[type="submit"]:hover {
-    background-color: #D4621A;
+body > form input[type="submit"]:hover {
+    background: var(--button-hover);
 }
 
-h2 {
-    margin: 0;  
+body > form input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+body > form input[type="submit"]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+body::before {
+    content: "";
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: stretch;
+    border: 1px solid var(--surface-line);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+body > h2,
+body > ul {
+    position: relative;
+    grid-column: 2;
+    box-sizing: border-box;
+    padding-right: clamp(28px, 5.8vw, 80px);
+    padding-left: clamp(28px, 5.8vw, 80px);
+}
+
+body > h2 {
+    grid-row: 2;
+    margin: 0;
+    color: var(--accent);
+    font-size: clamp(2rem, 3.6vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.05;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
-li {
-    margin: 10px 0;
-    list-style-type: none;
+body > h2::before {
+    content: "Your string is";
+    display: block;
+    margin-bottom: 24px;
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+body > ul {
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 44px 0 0;
+    list-style: none;
+}
+
+body > ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    margin: 0;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+body > ul strong {
+    display: inline-grid;
+    place-items: center;
+    box-sizing: border-box;
+    min-width: 1.55em;
+    height: 1.55em;
+    padding: 0 0.45em;
+    border-radius: 999px;
+    background: var(--chip);
+    font-weight: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+body.no-results::after {
+    content: "Your character counts will show up here.";
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: center;
+    justify-self: center;
+    max-width: 18ch;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1.35;
+    text-align: center;
 }
