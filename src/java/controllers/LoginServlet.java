@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,13 +32,17 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        session.setAttribute("authenticated", false);
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String configuredUsername = getServletConfig().getInitParameter("username");
         String configuredPassword = getServletConfig().getInitParameter("password");
 
         List<String> errorMessages = new ArrayList<String>();
-        
+
         if ((username == null || username.trim().isEmpty()) && (password == null || password.isEmpty())) {
             errorMessages.add("Both username and password are required.");
         } else {
@@ -56,6 +61,7 @@ public class LoginServlet extends HttpServlet {
 
         if (errorMessages.isEmpty()) {
             // Successful login
+            request.getSession().setAttribute("authenticated", true);
             request.getRequestDispatcher("/success.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessages", errorMessages);

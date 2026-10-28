@@ -29,6 +29,13 @@ public class CharacterCountingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        
+        if (request.getSession().getAttribute("authenticated") == null || !(Boolean) request.getSession().getAttribute("authenticated")) {
+            response.sendRedirect(request.getContextPath() + "/");
+            return;
+        }
+
         String inputString = request.getParameter("inputString");
         String digits = getServletConfig().getInitParameter("digits");
         String vowels = getServletConfig().getInitParameter("vowels");

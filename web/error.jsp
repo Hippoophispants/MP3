@@ -21,7 +21,7 @@
                         <c:forEach var="errorMessage" items="${requestScope.errorMessages}">
                             <li><c:out value="${errorMessage}"/></li>
                         </c:forEach>
-                    </ul>
+                    </ul>   
                     <a class="return-link" href="${pageContext.request.contextPath}/index.jsp">← Back to Homepage</a>
                 </div>
             </div>
