@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/login-style.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/success-style.css">
     </head>
-    
-    <body>
+  
+    <body class="${param.inputString == null ? 'no-results' : ''}">
         <jsp:include page="header.jsp" />
         <h1>Enter a String</h1>
         <form method="post" action="${pageContext.request.contextPath}/CharacterCountingServlet">
